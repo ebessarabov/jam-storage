@@ -1,0 +1,13 @@
+JamBundle\Entity\JamType:
+    type{blackberry, cherry, strawberry, peach lavender}:
+        type: <current()>
+
+JamBundle\Entity\JamYear:
+    year{2012, 2013, 2014, 2015}:
+        year: <current()>
+
+JamBundle\Entity\JamJar:
+    jam{1..10}:
+        type: '@type*'
+        year: '@year*'
+        comment: <randomElement(['Good', 'Bad'])>
