@@ -1,6 +1,8 @@
 jam-storage
 ===========
 
+https://travis-ci.org/ebessarabov/jam-storage.svg?branch=master
+
 A Symfony project created on May 4, 2016, 12:22 pm.
 
 Run project:
