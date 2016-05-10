@@ -19,4 +19,7 @@ services:
 
     jam.jar_service:
         class: JamBundle\Services\JamJarService
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@jam.clone_service"]
+
+    jam.clone_service:
+        class: JamBundle\Services\CloneService

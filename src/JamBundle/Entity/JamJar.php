@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="jam_jars")
  * @ORM\Entity()
+ * @SuppressWarnings(PHPMD)
  */
 class JamJar
 {

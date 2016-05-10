@@ -2,10 +2,15 @@
 
 namespace JamBundle\Admin;
 
+use JamBundle\Entity\JamType;
+use JamBundle\Entity\JamYear;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Class JamJarAdmin
@@ -19,19 +24,19 @@ class JamJarAdmin extends Admin
     protected function configureFormFields(FormMapper $form)
     {
         $form
-            ->add('type', 'entity', [
-                'class' => 'JamBundle\Entity\JamType',
+            ->add('type', EntityType::class, [
+                'class' => JamType::class,
                 'choice_name' => 'type',
             ])
-            ->add('year', 'entity', [
-                'class' => 'JamBundle\Entity\JamYear',
+            ->add('year', EntityType::class, [
+                'class' => JamYear::class,
                 'choice_name' => 'year',
             ])
-            ->add('comment', 'text', ['required' => false])
+            ->add('comment', TextType::class, ['required' => false])
         ;
 
         if ($this->isCurrentRoute('create')) {
-            $form->add('amount', 'integer', [
+            $form->add('amount', IntegerType::class, [
                 'required' => false,
                 'mapped' => false,
                 'data' => '1',
@@ -72,7 +77,7 @@ class JamJarAdmin extends Admin
 
         if ($count > 1) {
             $service = $this->getConfigurationPool()->getContainer()->get('jam.jar_service');
-            $service->cloneJam($object, $count);
+            $service->cloneJam($object, $count - 1);
         }
     }
 }

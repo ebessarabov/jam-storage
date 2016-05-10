@@ -16,12 +16,19 @@ class JamJarService
     protected $entityManager;
 
     /**
+     * @var CloneService
+     */
+    protected $cloneService;
+
+    /**
      * JamJarService constructor.
      * @param EntityManager $entityManager
+     * @param CloneService $cloneService
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, CloneService $cloneService)
     {
         $this->entityManager = $entityManager;
+        $this->cloneService  = $cloneService;
     }
 
     /**
@@ -30,8 +37,10 @@ class JamJarService
      */
     public function cloneJam($object, $count)
     {
-        for ($i = 1; $i < $count; $i++) {
-            $this->entityManager->persist(clone $object);
+        for ($i = 0; $i < $count; $i++) {
+            $this->entityManager->persist(
+                $this->cloneService->cloneObject($object)
+            );
         }
 
         $this->entityManager->flush();

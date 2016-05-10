@@ -1,7 +1,7 @@
 jam-storage
 ===========
 
-https://travis-ci.org/ebessarabov/jam-storage.svg?branch=master
+<a href="https://travis-ci.org/ebessarabov/jam-storage"><img src="https://travis-ci.org/ebessarabov/jam-storage.svg?branch=master"></a>
 
 A Symfony project created on May 4, 2016, 12:22 pm.
 
@@ -18,6 +18,10 @@ Run project:
 5. php bin/console assets:install
 
 6. php bin/console server:run
+
+PhpUnit:
+
+1. ./vendor/bin/phpunit
 
 Analysis Tools:
 
